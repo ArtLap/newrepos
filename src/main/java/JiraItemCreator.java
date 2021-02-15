@@ -1,11 +1,11 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class JiraItemCreator {
+
 
     final public static class JiraItemCreatingError extends Error {
         public JiraItemCreatingError(List<String> errors) {
@@ -24,11 +24,10 @@ public class JiraItemCreator {
 
         @Override
         public String toString() {
-            return String.format("(%d) %s ", itemId, itemKey);
+            return String.format("(%d): %s ", itemId, itemKey);
         }
     }
 
-//    private String jSessionId = null;
     private String projectKey = null;
     private int projectId = -1;
     private int issueTypeId = -1;
@@ -41,18 +40,18 @@ public class JiraItemCreator {
 
     public JiraItemCreator(String projectKey) {
         HttpRequestBuilder.HttpResponse resp = new HttpRequestBuilder()
-                .httpMethod(HttpRequestBuilder.HTTPMethod.GET)
-                .send(url + "project");
+                .send(String.format("%sproject", url));
         if (resp.responseCode != 200) {
             errors.add(String
                     .format("Cannot obtain projects with current request. Response code: %d", resp.responseCode));
-        }
-        final JSONArray projects = new JSONArray(resp.responseBody);
-        for (int i = 0; i < projects.length(); i++) {
-            if (projects.getJSONObject(i).getString("key").contentEquals(projectKey)) {
-                this.projectId = projects.getJSONObject(i).getInt("id");
-                this.projectKey = projectKey;
-                break;
+        } else {
+            final JSONArray projects = new JSONArray(resp.responseBody);
+            for (int i = 0; i < projects.length(); i++) {
+                if (projects.getJSONObject(i).getString("key").contentEquals(projectKey)) {
+                    this.projectId = projects.getJSONObject(i).getInt("id");
+                    this.projectKey = projectKey;
+                    break;
+                }
             }
         }
         if (projectId == -1) {
@@ -69,45 +68,36 @@ public class JiraItemCreator {
         return Creds.creds.split(":")[0];
     }
 
-
-//        htrb = new HttpRequestBuilder()
-//                .setHeaders("Cookie", String.format("JSESSIONID=%S", jSessionId))
-//                .send(url);
-//        return htrb;
-
     public JiraItemCreator ofType(String issueTypeDisplayName) {
         HttpRequestBuilder.HttpResponse resp = new HttpRequestBuilder()
                 .httpMethod(HttpRequestBuilder.HTTPMethod.GET)
-                .send(url + "issuetype");
+                .send(String.format("%sproject/%s",url, projectKey));
         if (resp.responseCode != 200) {
             errors.add(String
                     .format("Cannot obtain issue types with current request. Response code: %d", resp.responseCode));
         }
-        final JSONArray issue = new JSONArray(resp);
+        final JSONArray issue = new JSONObject(resp.responseBody).getJSONArray("issueTypes");
         for (int i = 0; i < issue.length(); i++) {
             if (issue.getJSONObject(i).getString("name").contentEquals(issueTypeDisplayName)) {
-                this.issueTypeId = issue.getJSONObject(i).getInt("Id");
+                this.issueTypeId = issue.getJSONObject(i).getInt("id");
                 break;
             }
         }
         if (issueTypeId == -1) {
             errors.add(String.format("Issue type does not exist for project %s ", projectKey));
+            this.issueTypeId = 0;
         }
         return this;
     }
 
     public JiraItemCreator withPriority(String priorityDisplayName) {
         HttpRequestBuilder.HttpResponse resp = new HttpRequestBuilder()
-                .httpMethod(HttpRequestBuilder.HTTPMethod.GET)
                 .send(url + "priority");
-        final JSONArray priority = new JSONArray(resp);
+        final JSONArray priority = new JSONArray(resp.responseBody);
         for (int i = 0; i < priority.length(); i++) {
             if (priority.getJSONObject(i).getString("name").contentEquals(priorityDisplayName)) {
                 this.priorityId = priority.getJSONObject(i).getInt("id");
                 break;
-            } else {
-                errors.add(String
-                        .format("Cannot find such priority %s in %s project", priorityDisplayName, projectKey));
             }
         }
         return this;
@@ -124,6 +114,8 @@ public class JiraItemCreator {
     public JiraItemCreator withDescription(String content) {
         if (dataIsValid(content)) {
             this.content = content;
+        } else {
+            errors.add("Description is empty or null");
         }
         return this;
     }
@@ -168,34 +160,28 @@ public class JiraItemCreator {
                 JSONObject responseParsed = new JSONObject(response.responseBody);
                 created = new JiraItem(responseParsed.getString("key"), responseParsed.getInt("id"));
             } else {
-                errors.add(response.responseCode, "Cannot create JiraItem. HTTP response code: %s");
+                errors.add(String.format("Cannot create JiraItem. HTTP response code: %s", response.responseCode));
             }
         }
         if (errors.size() > 0) {
             throw new JiraItemCreatingError(errors);
         }
-        System.out.println(created);
         return created;
     }
 
-
     public static void main(String[] args) {
-        HttpRequestBuilder.HttpResponse hrp = new HttpRequestBuilder()
-                .httpMethod(HttpRequestBuilder.HTTPMethod.GET)
-                .send("https://jira.ithillel.com/rest/api/2/priority");
-        System.out.println(hrp.responseBody);
-
-//        ArrayList<String> labs = new ArrayList<>();
-//        labs.add("AQA");
-//        labs.add("Lapin");
-//        new JiraItemCreator("AQANS")
-//                .withSummary("Trying create JiraItem with JavaCode")
-//                .ofType("Ошибка")
-//                .withPriority("High")
-//                .withLabels(labs)
-//                .withDescription("STR:\n 1. Run Java Code\n 2. Get success code\n 3. Check in Jira new item")
-//                .create();
-//        System.out.println("hekki");
+        ArrayList<String> labs = new ArrayList<>();
+        labs.add("AQA");
+        labs.add("Lapin");
+        labs.add("builder");
+        JiraItem ji = new JiraItemCreator("AQ")
+                .ofType("Bug")
+                .withPriority("Medium")
+                .withSummary("JiraItem #140")
+                .withLabels(labs)
+                .withDescription("STR:\n 1. Compose HTTP-builder\n 2. Compose JiraItem-builder\n 3. Send REST Api with Java")
+                .create();
+        System.out.println(ji.toString());
     }
 }
 

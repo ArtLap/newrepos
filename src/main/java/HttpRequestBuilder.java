@@ -1,8 +1,9 @@
+import org.apache.commons.codec.binary.Base64;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -42,25 +43,21 @@ public class HttpRequestBuilder {
         }
     }
 
-    private HTTPMethod method = HTTPMethod.GET;
+    HTTPMethod method = HTTPMethod.GET;
     private String body = null;
     final private Map<String, String> headers = new HashMap<String, String>() {{
         put("Content-type", "application/JSON");
-        put("Authorization", "Basic " + Arrays.toString(new Base64().encodeToString(Creds.creds.getBytes())));
+        put("Authorization", "Basic " + (new Base64().encodeToString(Creds.creds.getBytes())));
     }};
-//    Base64().encode(Creds.creds.getBytes())));
+
+
     private void setCookie() {
-        String url = "https://jira.ithillel.com/rest/api/2";
+        final String url = "https://jira.ithillel.com/rest/api/2/";
         ArrayList<String> response = new ArrayList<>();
         try {
             final HttpsURLConnection httpCon = (HttpsURLConnection) new URL(url).openConnection();
             httpCon.setDoOutput(true);
-            try {
-                httpCon.setRequestMethod(HTTPMethod.HEAD.name());
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            }
-//            headers.forEach(httpCon::setRequestProperty);
+            httpCon.setRequestMethod(HTTPMethod.HEAD.name());
             for (Map.Entry<String, String> entry : headers.entrySet()) {
                 httpCon.setRequestProperty(entry.getKey(), entry.getValue());
             }
@@ -72,7 +69,7 @@ public class HttpRequestBuilder {
                         headers.put("Cookie", str);
                     }
                 });
-            };
+            }
             } catch (Throwable e) {
             throw new CannotBuildHttpRequest(Arrays
                     .stream(e.getStackTrace())
@@ -102,7 +99,6 @@ public class HttpRequestBuilder {
             final HttpsURLConnection httpCon = (HttpsURLConnection) new URL(url).openConnection();
             httpCon.setDoOutput(true);
             httpCon.setRequestMethod(method.name());
-//            headers.forEach(httpCon::setRequestProperty);
             for (Map.Entry<String, String> entry : headers.entrySet()) {
                 httpCon.setRequestProperty(entry.getKey(), entry.getValue());
             }
