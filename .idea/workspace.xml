@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b2cdf1-a6d1-4ae7-8590-eccfccc93b52" name="Default Changelist" comment="15.02.2021">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Browser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Browser.java" afterDir="false" />
-    </list>
+    <list default="true" id="23b2cdf1-a6d1-4ae7-8590-eccfccc93b52" name="Default Changelist" comment="15.02.2021" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
