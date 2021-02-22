@@ -42,8 +42,9 @@ public class Tests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if (Browser.isRemote){
-            browser.quit();
-        }
+        browser.quit();
+//        if (Browser.isRemote){
+//            browser.quit();
+//        }
     }
 }
