@@ -8,21 +8,31 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
-public abstract class Browser {
+public class Browser {
+    public final static class ErrorDefiningBrowser extends Error {
+        public ErrorDefiningBrowser(String msg) {
+            super(msg);
+        }
+    }
+
+
     private static WebDriver driver;
     private static final DesiredCapabilities caps = new DesiredCapabilities();
+    final static boolean isRemote = System.getProperty("REMOTE") != null;
     final private static String remoteURL = "http://10.0.0.69:4444/wd/hub";
-    final private static List<String> arguments = List
-            .of("--headless","--window-size=1920,1080", "--auto-open-devtools-for-tabs");
+    final private static List<String> arguments = Arrays
+            .asList("--headless", "--window-size=1920,1080", "--auto-open-devtools-for-tabs");
 
     public static WebDriver getDriver (){
         final String path = System.getProperty("user.dir");
+        final String getBrowser = System.getProperty("browser");
         if (driver == null) {
-            if (System.getProperty("browser").contentEquals("firefox")) {
+            if (getBrowser.contentEquals("firefox")) {
                 System.setProperty("webdriver.gecko.driver", path + "/bin/geckodriver.exe");
-                if (System.getenv("REMOTE") != null && System.getenv("REMOTE").toLowerCase().contentEquals("true")) {
+                if (isRemote) {
                     FirefoxOptions fOptions = new FirefoxOptions().addArguments(arguments);
                     caps.setCapability(ChromeOptions.CAPABILITY,  fOptions);
                     try {
@@ -31,9 +41,9 @@ public abstract class Browser {
                         e.printStackTrace();
                     }
                 } else driver = new FirefoxDriver();
-            } else {
+            } else if (getBrowser.contentEquals("chrome")){
                 System.setProperty("webdriver.chrome.driver", path + "/bin/chromedriver.exe");
-                if (System.getenv("REMOTE") != null && System.getenv("REMOTE").toLowerCase().contentEquals("true")){
+                if (isRemote){
                     ChromeOptions chOptions = new ChromeOptions().addArguments(arguments);
                     caps.setCapability(ChromeOptions.CAPABILITY,  chOptions);
                     try {
@@ -42,6 +52,8 @@ public abstract class Browser {
                         e.printStackTrace();
                     }
                 } else driver = new ChromeDriver();
+            } else {
+                throw new ErrorDefiningBrowser("Please set up valid browser property");
             }
         }
         return driver;
