@@ -1,0 +1,9 @@
+HttpRequestBuilder$HttpResponse.class
+HttpRequestBuilder.class
+HttpRequestBuilder$HTTPMethod.class
+HttpRequestBuilder$1.class
+JiraItemCreator$JiraItem.class
+Creds.class
+HttpRequestBuilder$CannotBuildHttpRequest.class
+JiraItemCreator$JiraItemCreatingError.class
+JiraItemCreator.class

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="23b2cdf1-a6d1-4ae7-8590-eccfccc93b52" name="Default Changelist" comment="15.02.2021">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Browser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Browser.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1nWEBYwf89Y7WUlwan1al1tK1J3" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\git\newrepos\src\test\java" />
+      <recent name="C:\git\newrepos\bin" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install -Dlorem=ipsum" />
+      <command value="mvn clean install -Dff=firefox" />
+      <command value="mvn clean install -Dbrowser=firefox" />
+      <command value="mvn clean install -Dbrowser=fchrome" />
+      <command value="mvn clean install -Dbrowser=chrome" />
+      <command value="mvn clean install -Dbrowser=chrome;login=snk.a.lapin;password=145783269Zaq" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=addlabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=firefox&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=blalabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=firefox&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=label&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=blalabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=anylabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=newlabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=testlabel&quot; &quot;-Dfile.encoding=UTF-8&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=testlabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=chlabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=2ndlabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=3ndlabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dlabel=4ndlabel&quot;" />
+      <command value="mvn clean install &quot;-Dbrowser=chrome&quot; &quot;-Dlogin=snk.a.lapin&quot; &quot;-Dpassword=145783269Zaq&quot; &quot;-Dmode=headless&quot;" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.JiraItemCreator">
+    <configuration name="ClassWork" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ClassWork" />
+      <module name="newrepos" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JiraItemCreator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JiraItemCreator" />
+      <module name="newrepos" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JiraMove" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JiraMove" />
+      <module name="newrepos" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.JiraItemCreator" />
+        <item itemvalue="Application.ClassWork" />
+        <item itemvalue="Application.JiraMove" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23b2cdf1-a6d1-4ae7-8590-eccfccc93b52" name="Default Changelist" comment="" />
+      <created>1611497312330</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611497312330</updated>
+    </task>
+    <task id="LOCAL-00001" summary="starting">
+      <created>1611499296369</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611499296369</updated>
+    </task>
+    <task id="LOCAL-00002" summary="15.02.2021">
+      <created>1613413337187</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1613413337187</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="starting" />
+    <MESSAGE value="15.02.2021" />
+    <option name="LAST_COMMIT_MESSAGE" value="15.02.2021" />
+  </component>
+</project>
