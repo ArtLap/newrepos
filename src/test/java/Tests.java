@@ -43,8 +43,8 @@ public class Tests {
             e.printStackTrace();
         }
         browser.quit();
-//        if (Browser.isRemote){
-//            browser.quit();
-//        }
+        if (Browser.isRemote){
+            browser.quit();
+        }
     }
 }
