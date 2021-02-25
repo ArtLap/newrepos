@@ -21,18 +21,27 @@ public class Browser {
 
     private static WebDriver driver;
     private static final DesiredCapabilities caps = new DesiredCapabilities();
-    final static boolean isRemote = System.getProperty("REMOTE") != null;
+ //   final static boolean isRemote = System.getProperty("REMOTE") != null;
     final private static String remoteURL = "http://10.0.0.69:4444/wd/hub";
     final private static List<String> arguments = Arrays
             .asList("--headless", "--window-size=1920,1080", "--auto-open-devtools-for-tabs");
 
-    public static WebDriver getDriver (){
+    public enum isRemote {
+        INSTANCE;
+
+        public boolean getValue(){
+            return System.getProperty("REMOTE") != null;
+        }
+    }
+
+
+    public static WebDriver getDriver() throws MalformedURLException{
         final String path = System.getProperty("user.dir");
         final String getBrowser = System.getProperty("browser");
         if (driver == null) {
             if (getBrowser.contentEquals("firefox")) {
                 System.setProperty("webdriver.gecko.driver", path + "/bin/geckodriver.exe");
-                if (isRemote) {
+                if (isRemote.INSTANCE.getValue()) {
                     FirefoxOptions fOptions = new FirefoxOptions().addArguments(arguments);
                     caps.setCapability(ChromeOptions.CAPABILITY,  fOptions);
                     try {
@@ -43,7 +52,7 @@ public class Browser {
                 } else driver = new FirefoxDriver();
             } else if (getBrowser.contentEquals("chrome")){
                 System.setProperty("webdriver.chrome.driver", path + "/bin/chromedriver.exe");
-                if (isRemote){
+                if (isRemote.INSTANCE.getValue()){
                     ChromeOptions chOptions = new ChromeOptions().addArguments(arguments);
                     caps.setCapability(ChromeOptions.CAPABILITY,  chOptions);
                     try {
