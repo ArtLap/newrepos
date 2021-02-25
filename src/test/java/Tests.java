@@ -7,8 +7,17 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
+
 public class Tests {
-    public WebDriver browser = Browser.getDriver();
+    public WebDriver browser;
+    {
+        try {
+            browser = Browser.getDriver();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
 
     @BeforeClass
     public void init(){
@@ -16,7 +25,7 @@ public class Tests {
         browser.get("https://google.com.ua");
     }
 
-    @Test(priority = 0)
+    @Test
     public void test1(){
         String gValue = browser.findElement(By.cssSelector("input[name=btnI")).getAttribute("value");
         Assert.assertEquals(gValue, "Мне повезёт!", "Results are not matched");
@@ -43,7 +52,8 @@ public class Tests {
             e.printStackTrace();
         }
         browser.quit();
-        if (Browser.isRemote){
+        Browser.isRemote isPushed = Browser.isRemote.INSTANCE;
+        if (isPushed.getValue()){
             browser.quit();
         }
     }
